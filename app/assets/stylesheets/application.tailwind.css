@@ -1,0 +1,11 @@
+@import "components/form-controls.css";
+@import "components/blog.css";
+@import "components/application.css";
+
+@import "../../components/flash_component/flash_component.css";
+@import "../../components/header/header_component.css";
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

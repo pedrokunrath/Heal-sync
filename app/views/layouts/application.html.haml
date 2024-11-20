@@ -1,0 +1,38 @@
+!!!
+%html.scroll-smooth
+  %head
+    -# change web locale to pt-BR
+    %meta{:content => I18n.locale, :name => "web_locale"}/
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title
+      = content_for?(:title) ? yield(:title) : "Heal-sync"
+    %meta{:content => content_for?(:meta) ? yield(:meta) : "Heal-sync", :name => "description"}/
+    %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}/
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag "application", "data-turbo-track": "reload"
+    = javascript_include_tag "application", "data-turbo-track": "reload", type: "module"
+
+    %link{:href => "favicon.ico", :rel => "icon", :type => "image/x-icon"}/
+  %body
+
+    - if %w[blogs categories].include?(controller.controller_name)
+      = render Header::BlogHeaderComponent.new
+    - elsif !( controller.controller_name == "registrations" || controller.controller_name == "sessions" )
+      .hidden.md:block
+        = render Header::HeaderComponent.new
+      .block.md:hidden
+        -# = render 'sidenav'
+
+    %main
+      = yield
+
+    - if %w[blogs categories].include?(controller.controller_name)
+      = render Footer::BlogFooterComponent.new
+    - else
+      = render Footer::FooterComponent.new
+
+      = turbo_frame_tag "flash" do
+        = render(FlashComponent.new(flash: flash))
+
+

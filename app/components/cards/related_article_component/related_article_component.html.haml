@@ -1,0 +1,8 @@
+.w-full.space-y-4
+  = image_tag @article.header_image, class: 'object-cover object-center rounded-lg shadow-lg h-40 w-full'
+  %h2.text-2xl.font-bold= @article.title
+  %p.text-gray-500= @article.meta
+  = link_to blog_path(@article.slug), class: 'inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-primary-700 rounded-lg hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-blue-300' do
+    = t('read_in', time: reading_time(@article.content).to_i)
+    %svg.rtl:rotate-180.ms-2{"aria-hidden" => "true", class: "w-3.5 h-3.5", fill: "none", viewbox: "0 0 14 10", xmlns: "http://www.w3.org/2000/svg"}
+      %path{d: "M1 5h12m0 0L9 1m4 4L9 9", stroke: "currentColor", "stroke-linecap" => "round", "stroke-linejoin" => "round", "stroke-width" => "2"}

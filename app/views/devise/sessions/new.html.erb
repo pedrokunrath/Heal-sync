@@ -1,0 +1,29 @@
+<div class="flex items-center justify-center w-full h-screen flex-col bg-primary-600 space-y-6">
+  <div class="bg-white w-72 p-8 rounded-lg shadow-lg">
+
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="form-field">
+        <%= heroicon "mail", options: { class: "h-6 w-6 text-gray-400" } %>
+        <%= f.label :email %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      </div>
+
+      <div class="form-field">
+        <%= f.label :password %>
+        <%= f.password_field :password, autocomplete: "current-password" %>
+      </div>
+
+      <% if devise_mapping.rememberable? %>
+        <div class="flex items-start mb-5">
+          <div class="flex items-center h-5">
+          <%= f.check_box :remember_me, class: "cursor-pointer w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300" %>
+          </div>
+          <%= f.label :remember_me, class: "ms-2 text-sm font-medium text-gray-900 cursor-pointer" %>
+        </div>
+      <% end %>
+
+
+        <%= f.submit "Entrar", class: "form-submit" %>
+    <% end %>
+  </div>
+</div>

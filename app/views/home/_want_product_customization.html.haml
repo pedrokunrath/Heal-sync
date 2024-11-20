@@ -1,0 +1,10 @@
+.container.mx-auto
+  .w-full.flex.justify-center.flex-col
+    .space-y-12.mx-auto
+      .space-y-4
+        %h1.leading-tight.text-4xl.font-extrabold.text-center
+          = t('.want_product_customization')
+        .text-xl.text-gray-500
+          = t('.description')
+      .mx-auto{class: 'w-1/2'}
+        = render 'want_product_form'

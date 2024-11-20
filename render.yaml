@@ -1,0 +1,47 @@
+# Exported from Render on 2024-07-04T14:49:23Z
+databases:
+  - name: yogomarcas_database
+    databaseName: yogomarcas_database
+    user: yogomarcas_database_user
+    plan: starter
+    region: oregon
+    ipAllowList:
+      - source: 0.0.0.0/0
+        description: everywhere
+    postgresMajorVersion: "16"
+services:
+  - type: web
+    name: yogomarcas
+    runtime: docker
+    repo: https://github.com/Murilo-Araujo/yogomarcas
+    plan: starter
+    envVars:
+      - key: SECRET_KEY_BASE
+        sync: false
+      - key: RAILS_ENV
+        sync: false
+      - key: RAILS_DB_MIGRATE_ON_STARTUP
+        sync: false
+      - key: MAILGUN_ENABLED
+        sync: false
+      - key: DEFAULT_HOST_PROTOCOL
+        sync: false
+      - key: DATABASE_USERNAME
+        sync: false
+      - key: DATABASE_PORT
+        sync: false
+      - key: DATABASE_PASSWORD
+        fromDatabase:
+          name: yogomarcas_database
+          property: password
+      - key: DATABASE_NAME
+        sync: false
+      - key: DATABASE_HOST
+        fromDatabase:
+          name: yogomarcas_database
+          property: host
+    region: oregon
+    healthCheckPath: /up
+    dockerContext: .
+    dockerfilePath: ./Dockerfile.production
+version: "1"

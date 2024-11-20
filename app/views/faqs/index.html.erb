@@ -1,0 +1,8 @@
+<div class="mt-24 p-12">
+  <h1 class="leading-tight text-4xl font-extrabold text-center mb-8">Perguntas Frequentes</h1>
+  <%= render Faqs::FaqQuestionComponent.new(question: 'po', options: { class: 'rounded-t-xl' }) do |faq| %>
+    <% faq.with_answer do %>
+      <p class="text-lg">This is the answer</p>
+    <% end %>
+  <% end %>
+</div>

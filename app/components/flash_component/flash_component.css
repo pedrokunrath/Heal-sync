@@ -1,0 +1,23 @@
+.flash_component {
+  @apply p-3 flex items-center space-x-3 max-w-sm w-full bg-white shadow-lg sm:rounded-lg pointer-events-auto ring-1 ring-black ring-opacity-5 overflow-hidden transition transform duration-300;
+}
+
+.flash_component__backdrop {
+  @apply fixed inset-0 flex items-end sm:pb-6 pointer-events-none z-30;
+}
+
+.flash_component__container {
+  @apply w-full max-w-7xl mx-auto flex flex-col items-center space-y-3;
+}
+
+.flash_component__icon-area {
+  @apply flex-shrink-0;
+}
+
+.flash_component__message {
+  @apply flex-1 text-base sm:text-sm font-medium;
+}
+
+.flash_component__actions {
+  @apply flex-shrink-0;
+}

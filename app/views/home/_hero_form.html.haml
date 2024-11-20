@@ -1,0 +1,20 @@
+= form_with model: @contact, url: contacts_path, method: :post, remote: true, authenticity_token: true, class: 'w-full' do |f|
+  .space-y-6.p-6.bg-white.rounded-lg
+    .text-2xl.font-bold.text-gray-900
+      %h2= t(".subtitle").html_safe
+    .space-y-2
+      = f.label :name, t(".name"), class: 'block mb-2 text-sm font-medium text-gray-900'
+      .relative.flex.items-center
+        = heroicon "user", variant: :solid, options: { class: "h-5 text-gray-500 absolute left-3" }
+        = f.text_field :name, placeholder: 'João Mota', class: 'bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5'
+    .space-y-2
+      = f.label :email, t(".email"), class: 'block mb-2 text-sm font-medium text-gray-900'
+      .relative.flex.items-center
+        = heroicon "envelope", variant: :solid, options: { class: "h-5 text-gray-500 absolute left-3" }
+        = f.email_field :email, placeholder: 'example@hotmail.com', class: 'bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5'
+    .space-y-2
+      = f.label :phone, t(".phone"), class: 'block mb-2 text-sm font-medium text-gray-900'
+      .relative.flex.items-center
+        = heroicon "phone", variant: :solid, options: { class: "h-5 text-gray-500 absolute left-3" }
+        = f.text_field :phone, placeholder: '+55 11 99999-9999', class: 'bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5', data: { controller: 'phone-number' }
+    = f.submit t(".cta"), class: "focus:outline-none text-white font-medium rounded-lg text-sm px-5 py-2.5 me-1 mb-2 bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:ring-primary-800 cursor-pointer w-full"

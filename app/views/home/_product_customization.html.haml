@@ -1,0 +1,50 @@
+.min-h-screen.w-full
+  .container.mx-auto.space-y-24
+    .grid.grid-cols-1.lg:grid-cols-2.py-12
+      .pr-24.hidden.lg:block
+        .h-full.flex.items-center
+          = image_tag "product-customization.png", class: "object-cover object-center w-full rounded-lg h-3/4"
+      .space-y-12
+        .space-y-4
+          %h1.leading-tight.text-4xl.font-extrabold
+            = t(".title").html_safe
+          .text-xl.text-gray-500
+            = t(".description").html_safe
+
+        .border-t.border-b.border-gray-200.py-4
+          .space-y-8
+            .flex.space-x-4
+              = lucide_icon "search-check", class: "min-h-8 min-w-8 text-primary-600 p-2 bg-primary-300 rounded-full"
+              .space-y-2
+                %h2.leading-tight.text-xl.font-bold
+                  = t(".search_title").html_safe
+                .text-base.font-normal.text-gray-500
+                  = t(".search_description").html_safe
+
+            .flex.space-x-4
+              = lucide_icon "flask-conical", class: "min-h-8 min-w-8 text-primary-600 p-2 bg-primary-300 rounded-full"
+              .space-y-2
+                %h2.leading-tight.text-xl.font-bold
+                  = t(".flask_title").html_safe
+                .text-base.font-normal.text-gray-500
+                  = t(".flask_description").html_safe
+
+            .flex.space-x-4
+              = lucide_icon "clipboard", class: "min-h-8 min-w-8 text-primary-600 p-2 bg-primary-300 rounded-full"
+              .space-y-2
+                %h2.leading-tight.text-xl.font-bold
+                  = t(".test_title").html_safe
+                .text-base.font-normal.text-gray-500
+                  = t(".test_description").html_safe
+
+            .flex.space-x-4
+              = lucide_icon "factory", class: "min-h-8 min-w-8 text-primary-600 p-2 bg-primary-300 rounded-full"
+              .space-y-2
+                %h2.leading-tight.text-xl.font-bold
+                  = t(".production_title").html_safe
+                .text-base.font-normal.text-gray-500
+                  = t(".production_description").html_safe
+
+        = link_to products_path, class: "hover:underline underline-offset-1 focus:outline-none leading-none text-lg font-medium text-primary-600 mt-6 flex" do
+          = t(".see_more")
+          = heroicon "arrow-right", variant: :solid, options: { class: "h-5 w-5 ml-2" }

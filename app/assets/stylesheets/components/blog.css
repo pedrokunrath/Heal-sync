@@ -1,0 +1,128 @@
+/* create a css to transform the blog content */
+.blog-content {
+    @apply w-full ;
+
+    > p {
+        font-size: 1.2em;
+        line-height: 1.5em;
+        margin-bottom: 1.5em;
+        @apply text-gray-700;
+
+    }
+
+    > h1 {
+        font-size: 2em;
+        margin-bottom: 1.5em;
+        @apply bg-primary-500 flex items-center justify-center p-4 text-white;
+    }
+
+    > h2 {
+
+        scroll-margin-top: 150px;
+        margin-bottom: 1.5em;
+        @apply leading-tight text-4xl font-extrabold;
+    }
+
+    > h3 {
+        margin-bottom: 1.5em;
+        @apply text-2xl font-bold;
+    }
+
+    > h4 {
+        font-size: 1em;
+        margin-bottom: 1.5em;
+    }
+
+    > h5 {
+        font-size: 0.8em;
+        margin-bottom: 1.5em;
+    }
+
+    > h6 {
+        font-size: 0.6em;
+        margin-bottom: 1.5em;
+    }
+
+    > blockquote {
+        font-size: 1.2em;
+        line-height: 1.5em;
+        margin-bottom: 1.5em;
+    }
+
+    > ul {
+        font-size: 1.2em;
+        line-height: 1.5em;
+        margin-bottom: 1.5em;
+    }
+
+    > ol {
+        font-size: 1.2em;
+        line-height: 1.5em;
+        margin-bottom: 1.5em;
+    }
+
+    > pre {
+        font-size: 1.2em;
+        line-height: 1.5em;
+        margin-bottom: 1.5em;
+    }
+
+    > code {
+        font-size: 1.2em;
+        line-height: 1.5em;
+        margin-bottom: 1.5em;
+    }
+
+    > img {
+        width: 100%;
+        height: auto;
+        margin-bottom: 1.5em;
+    }
+
+    > table {
+        width: 100%;
+        margin-bottom: 1.5em;
+    }
+
+    > table th {
+        font-size: 1.2em;
+        line-height: 1.5em;
+    }
+
+    > table td {
+        font-size: 1.2em;
+        line-height: 1.5em;
+    }
+
+    > a {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+    > a:hover {
+        color: #0056b3;
+        text-decoration: underline;
+    }
+
+    > hr {
+        margin-bottom: 1.5em;
+        margin-top: 1.5em;
+    }
+
+}
+
+.blog-index {
+    width: 25%;
+    padding-right: 5%;
+
+}
+
+.blog-index-title {
+    @apply font-bold mb-4
+}
+
+.blog-index-content {
+    > li > a {
+        @apply text-gray-400 hover:text-primary-500;
+    }
+}

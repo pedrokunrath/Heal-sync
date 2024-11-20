@@ -1,0 +1,29 @@
+= content_for(:title, @blog.title)
+= content_for(:meta, @blog.meta)
+%section.bg-primary-500
+  .container.mx-auto.px-4
+    .flex.pt-20.pb-10.items-center
+
+      .ml-0.lg:ml-40{class: 'w-full lg:w-1/2'}
+        %h1.text-gray-900.text-5xl.font-bold.mb-12.leading-tight= @blog.title
+        .flex.space-x-4
+          %p.text-sm.text-gray-800.text-lg= l(@blog.created_at.to_date, format: :blog).humanize
+          %p.text-sm.text-gray-800.text-lg= t('.time_to_read', time: reading_time(@blog.content).to_i)
+      -# the image resizes to the height of the other div
+      .ml-20{class: 'w-1/2 h-64 rounded-lg shadow-lg overflow-hidden hidden lg:block'}
+        - if @blog.header_image.attached?
+          = image_tag @blog.header_image, class: 'object-cover object-center rounded-lg shadow-lg'
+
+%article.container.mx-auto.pt-20.flex.px-4{ data: { controller: 'blog' }}
+  .blog-index.hidden.md:block
+    .sticky.top-40
+      .blog-index-title= t('.index')
+      %ul.space-y-2.text-sm.h-auto.blog-index-content{ data: { "blog-target": "blogIndex" } }
+
+    -# = render 'blog_index', blog: @blog
+
+  .blog-content{ data: { "blog-target": "blogContent" }, class: 'w-full md:w-3/5'}
+    = MarkdownHandler.render(@blog.content)
+
+.mt-24
+  = render 'related_articles', blog: @blog

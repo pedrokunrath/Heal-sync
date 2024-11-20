@@ -1,0 +1,92 @@
+<footer class="py-12 bg-gray-50 xl:pt-24 ">
+  <div class="w-full max-w-8xl container mx-auto">
+    <div class="grid gap-12 xl:grid-cols-6 xl:gap-24">
+      <div class="col-span-2">
+        <%= link_to root_path, class: "flex mb-12" do %>
+          <%= image_tag "logo.png", class: "h-16 mr-3", alt: "yogoway Logo" %>
+        <% end %>
+        <p class="max-w-lg mb-3 text-gray-600"><%= t('footer.description') %></p>
+      </div>
+      <div>
+        <h3 class="mb-6 text-sm font-semibold text-gray-400 uppercase">Resources</h3>
+        <ul>
+          <li class="mb-4">
+            <a href="https://flowbite.com/" class="font-medium text-gray-600 hover:underline">Documentation</a>
+          </li>
+          <li class="mb-4">
+            <a href="https://flowbite.com/blocks/" class="font-medium text-gray-600 hover:underline">Flowbite Blocks</a>
+          </li>
+          <li class="mb-4">
+            <a href="https://flowbite.com/figma/" class="font-medium text-gray-600 hover:underline">Figma Design</a>
+          </li>
+          <li class="mb-4">
+            <a href="https://flowbite.com/icons/" class="font-medium text-gray-600 hover:underline">Flowbite Icons</a>
+          </li>
+          <li class="mb-4">
+            <a href="https://chat.openai.com/g/g-y7yC35HB9-flowbite-gpt" class="font-medium text-gray-600 hover:underline">Flowbite
+              GPT</a>
+          </li>
+          <li class="mb-4">
+            <a href="https://flowbite.com/pro/" class="font-medium text-gray-600 hover:underline">Pro version</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="mb-6 text-sm font-semibold text-gray-400 uppercase">Help and support</h3>
+        <ul>
+          <li class="mb-4">
+            <a href="https://flowbite.com/contact/" rel="noreferrer nofollow" class="font-medium text-gray-600 hover:underline">Contact
+              us</a>
+          </li>
+          <li class="mb-4">
+            <a href="https://github.com/themesberg/flowbite/discussions" rel="noreferrer nofollow" class="font-medium text-gray-600 hover:underline">Github
+              discussions</a>
+          </li>
+          <li class="mb-4 flex items-center">
+            <a href="https://flowbite.com/work-with-us/" class="font-medium text-gray-600 hover:underline">Work with
+              us </a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="mb-6 text-sm font-semibold text-gray-400 uppercase">Follow us</h3>
+        <ul>
+          <li class="mb-4">
+            <a href="https://discord.gg/4eeurUVvTy" rel="noreferrer nofollow" class="font-medium text-gray-600 hover:underline">Discord</a>
+          </li>
+          <li class="mb-4">
+            <a href="https://github.com/themesberg/flowbite" class="font-medium text-gray-600 hover:underline">Github</a>
+          </li>
+          <li class="mb-4">
+            <a href="https://twitter.com/zoltanszogyenyi" rel="noreferrer nofollow" class="font-medium text-gray-600 hover:underline">Twitter/X</a>
+          </li>
+          <li class="mb-4">
+            <a href="https://www.linkedin.com/in/zoltanszogyenyi/" rel="noreferrer nofollow" class="font-medium text-gray-600 hover:underline">LinkedIn</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="mb-6 text-sm font-semibold text-gray-400 uppercase">Legal</h3>
+        <ul>
+          <li class="mb-4">
+            <a href="https://flowbite.com/license/" class="font-medium text-gray-600 hover:underline">License (EULA)</a>
+          </li>
+          <li class="mb-4">
+            <a href="https://flowbite.com/privacy-policy/" class="font-medium text-gray-600 hover:underline">Privacy
+              Policy</a>
+          </li>
+          <li class="mb-4">
+            <a href="https://flowbite.com/terms-and-conditions/" class="font-medium text-gray-600 hover:underline">Terms &amp;
+              Conditions</a>
+          </li>
+          <li class="mb-4">
+            <a href="https://flowbite.com/brand/" class="font-medium text-gray-600 hover:underline">Brand guideline</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <hr class="my-8 border-gray-200 lg:my-12">
+    <span class="block text-center text-gray-600 font-">© 2012-<span id="currentYear"><%= Date.current.year %></span> <a href="<%= root_path %>">Yogomarcas™</a> Todos os direitos reservados.
+        </span>
+  </div>
+</footer>

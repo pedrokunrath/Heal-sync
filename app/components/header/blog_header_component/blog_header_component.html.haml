@@ -1,0 +1,18 @@
+%header.sticky.top-0.z-50
+  .h-20.items-center.flex.bg-white.w-full.shadow-lg
+    .container.mx-auto
+      .grid.grid-cols-2.h-full.md:grid-cols-3
+        .flex.items-end
+          = link_to blogs_path, class: "w-full" do
+            = image_tag "logo.png", class: "h-14 w-auto -mt-8"
+
+        .flex.items-end.justify-center.h-full.hidden.md:block
+          - categories = Category.all.limit(3)
+          %ul.flex.items-center.space-x-4.h-full
+            - categories.each do |category|
+              %li
+                = link_to category.name, category_path(category.name), class: "text-gray-600 focus:outline-none text-xl font-medium rounded-lg pr-2 py-2.5 me-1 mb-2 hover:text-primary-600"
+
+        .flex.items-end.justify-end
+          = link_to root_path, class: "inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-primary-700 rounded-lg hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-blue-300" do
+            = t("shared.learn_more")

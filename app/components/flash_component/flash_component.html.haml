@@ -1,0 +1,20 @@
+.flash_component__backdrop
+  - @messages.each do |message|
+    .flash_component__container
+      .flash_component.hidden{
+        data: {
+          controller: "notification",
+          notification_delay_value: "3000",
+          transition_enter_from: "opacity-0 translate-y-6",
+          transition_enter_to: "opacity-100 translate-y-0",
+          transition_leave_from: "opacity-100 translate-y-0",
+          transition_leave_to: "opacity-0 translate-y-6"
+        }}
+        .flash_component__icon-area
+          = helpers.heroicon message[:icon], options: { class: "h-10 w-10 sm:h-8 sm:w-8 #{message[:class]}" }
+        .flash_component__message{ class: message[:class] }
+          = message[:message].html_safe
+        .flash_component__actions
+          %button.btn-circle{id: 'dismiss_flash_message', type: 'button', "data-action": "notification#hide"}
+            %span.sr-only Close
+            = helpers.heroicon 'x-mark', options: { class: "btn-circle__icon" }

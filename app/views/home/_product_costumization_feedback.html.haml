@@ -1,0 +1,15 @@
+.w-full.bg-gray-100
+  .container.mx-auto.py-24
+    .mx-auto{class: "w-2/3"}
+      .space-y-12
+        .leading-relaxed.text-2xl.font-semibold.text-center
+          = t('.feedback')
+        .flex.space-x-4.justify-center
+          = image_tag "product-customization-feedback-client.jpg", class: "object-cover object-center w-8 h-8 rounded-full"
+          .flex.items-center
+            .leading-tight.text-base.font-semibold
+              João Silva
+            .leading-tight.text-base.font-semibold.px-4
+              = '/'
+            .leading-tight.text-sm.font-normal
+              = t('.feedback_info')

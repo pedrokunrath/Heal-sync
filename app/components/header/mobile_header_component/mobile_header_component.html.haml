@@ -1,0 +1,12 @@
+%header.h-0.fixed.top-0.z-50.items-center.flex.backdrop-blur-sm.w-full.duration-700{data: { controller: 'header sidebar' }}
+  .container.mx-auto
+    .grid.grid-cols-2
+      .fixed.inset-0.flex.z-40.transition.ease-in-out.duration-200.hidden{"aria-modal" => "true", "data-sidebar-target" => "overlay", "data-transition-enter-end" => "opacity-100", "data-transition-enter-start" => "opacity-0", "data-transition-leave-after" => "0", "data-transition-leave-end" => "opacity-0", "data-transition-leave-start" => "opacity-100", role: "dialog"}
+        .fixed.inset-0
+          .absolute.inset-0.bg-gray-600.bg-opacity-75{"aria-hidden" => "true"}
+        .relative.flex-1.flex.flex-col.max-w-xs.w-full.bg-white{"data-sidebar-target" => "menu", "data-transition-enter" => "transition ease-in-out duration-200 transform", "data-transition-enter-end" => "translate-x-0", "data-transition-enter-start" => "-translate-x-full", "data-transition-leave" => "transition ease-in-out duration-100 transform", "data-transition-leave-end" => "-translate-x-full", "data-transition-leave-start" => "translate-x-0"}
+          .absolute.top-0.right-0.-mr-11.pt-3
+            %button.flex.items-center.justify-center.h-10.w-10.rounded-full.focus:outline-none.focus:ring-2.focus:ring-inset.focus:ring-white{"data-action" => "sidebar#close", type: "button"}
+              %span.sr-only Close sidebar
+          = heroicon 'x-mark', options: { class: 'h-6 w-6 text-black' }
+        .flex-shrink-0.w-14{"aria-hidden" => "true"}

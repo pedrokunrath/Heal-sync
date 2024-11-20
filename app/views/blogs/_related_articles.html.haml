@@ -1,0 +1,6 @@
+.bg-gray-100
+  .container.mx-auto.py-12
+    %h2.text-3xl.font-bold.mb-8= t('.related_articles')
+    .grid.grid-cols-1.sm:grid-cols-2.gap-12.md:grid-cols-3
+      - @blog.category.blogs.sample(3).each do |blog|
+        = render Cards::RelatedArticleComponent.new(article: blog)

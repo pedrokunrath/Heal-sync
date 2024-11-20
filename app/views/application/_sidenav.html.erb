@@ -1,0 +1,48 @@
+<div aria-modal="true" class="fixed inset-0 flex z-40 transition ease-in-out duration-200 hidden" data-sidebar-target="overlay" data-transition-enter-end="opacity-100" data-transition-enter-start="opacity-0" data-transition-leave-after="0" data-transition-leave-end="opacity-0" data-transition-leave-start="opacity-100" role="dialog">
+  <div class="fixed inset-0">
+    <div aria-hidden="true" class="absolute inset-0 bg-gray-600 bg-opacity-75"></div>
+  </div>
+  <div class="relative flex-1 flex flex-col max-w-xs w-full bg-white"
+       data-sidebar-target="menu"
+       data-transition-enter="transition ease-in-out duration-200 transform"
+       data-transition-enter-end="translate-x-0"
+       data-transition-enter-start="-translate-x-full"
+       data-transition-leave="transition ease-in-out duration-100 transform"
+       data-transition-leave-end="-translate-x-full"
+       data-transition-leave-start="translate-x-0">
+    <div class="absolute top-0 right-0 -mr-11 pt-3">
+      <button class="flex items-center justify-center h-10 w-10 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" data-action="sidebar#close" type="button">
+        <span class="sr-only">Close sidebar</span>
+        <%= heroicon 'x-mark', options: { class: 'h-6 w-6 text-white' } %>
+
+      </button>
+    </div>
+    <div class="sidebar">
+      <div class="sidebar__header items-end pb-3 justify-between">
+        <%= link_to root_path, class: "focus:outline-none focus:ring-2 focus:ring-primary-200" do %>
+          <%= inline_svg_tag 'logo.svg', class: 'fill-primary-500 h-8 w-auto' %>
+        <% end %>
+        <%= render "help_dropdown" %>
+      </div>
+      <div class="sidebar__body">
+        <%= render "profile_menu" %>
+        <% if can?(:read, :advanced_search) %>
+          <div class="my-1.5"></div>
+          <%= form_with url: multisearches_url, method: :get, data: { controller: "search-form", turbo_frame: '_top' }, html: { class: 'px-3 w-full' } do |f| %>
+            <div class="search-form__container flex-1">
+              <%= f.search_field :q, placeholder: t("shared.general_search"), class: "form-control sm:pl-8", data: { action: 'search->search-form#onResetSearch' } %>
+            </div>
+          <% end %>
+        <% end %>
+        <div class="my-1.5"></div>
+        <%= render "sidenav_content" %>
+      </div>
+      <div class="sidebar__footer">
+        <%= turbo_frame_tag :switch_account, src: user_settings_switch_account_path, loading: :lazy, class: 'h-16' do %>
+          <%= render(TurboLoadingComponent.new) %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div aria-hidden="true" class="flex-shrink-0 w-14"></div>
+</div>

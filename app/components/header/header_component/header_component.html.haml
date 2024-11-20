@@ -1,0 +1,14 @@
+%header.h-20.fixed.top-0.z-50.items-center.flex.backdrop-blur-sm.w-full.duration-700{data: { controller: 'header' }}
+  .container.mx-auto
+    .grid.grid-cols-3.h-full
+      .flex.items-end
+        = link_to t(".home"), root_path, class: "text-gray-600 focus:outline-none text-xl font-medium rounded-lg pr-2 py-2.5 me-1 mb-2 hover:text-primary-600 #{'text-primary-500' if current_page?(root_path)}"
+        = link_to t(".products"), products_path, class: "text-gray-600 focus:outline-none text-xl font-medium rounded-lg px-2 py-2.5 me-1 mb-2 hover:text-primary-600 #{'text-primary-500' if current_page?(products_path)}"
+        = link_to t("footer.blog"), blogs_path, class: "text-gray-600 focus:outline-none text-xl font-medium rounded-lg px-2 py-2.5 me-1 mb-2 hover:text-primary-600"
+      .flex.items-end
+        = link_to root_path, class: "w-full justify-center flex" do
+          = image_tag "logo.png", class: "h-20 w-auto -mt-4"
+      .flex.items-end.justify-end
+        = link_to t(".talk_to_us"), nil, class: "text-gray-500 hover:underline underline-offset-1 focus:outline-none font-medium rounded-lg text-sm px-2 py-2.5 me-1.5 mb-2"
+        = link_to 'tel:+5511999999999', class: "text-gray-500 hover:bg-gray-200 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-2 py-2.5 me-1.5 mb-2", target: "_blank" do
+          = heroicon "phone", variant: :solid, options: { class: "h-4 w-4" }

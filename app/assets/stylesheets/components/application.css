@@ -1,0 +1,6 @@
+.container {
+    @apply sm:px-2;
+}
+.scale-130 {
+    transform: scale(1.3);
+}

@@ -1,0 +1,36 @@
+.min-h-screen{class: "bg-cover bg-center", style: "background-image: url('#{image_path('hero.jpg')}'); background-filter: blur(5px);"}
+  .container.mx-auto
+    .grid.grid-cols-1.w-full.py-32.gap-x-14.gap-y-40.lg:grid-cols-2
+      .space-y-12
+        .space-y-8
+          %h1.font-extrabold{class: 'text-[3.5rem] leading-[3.7rem]'}
+            = t(".title").html_safe
+          %p.text-xl.text-black.text-justify
+            %strong
+              = t(".description").html_safe
+        .w-full.bg-black.p-8.rounded-lg.grid.grid-cols-1.md:grid-cols-4.gap-4
+          .space-y-2
+            .leading-none.text-2xl.font-bold.items-center.flex.justify-center
+              = render Stimulus::AnimatedNumberComponent.new(start_value: 0, end_value: 200, duration: 2000)
+
+            .text-sm.font-medium.text-black.text-center
+              = t(".companies_served")
+          .space-y-2
+            .leading-none.text-2xl.font-bold.items-center.flex.justify-center
+              = render Stimulus::AnimatedNumberComponent.new(start_value: 0, end_value: Date.current.year - 2023, duration: 2000)
+            .text-sm.font-medium.text-black.text-center
+              = t(".years_experience")
+          .space-y-2
+            .leading-none.text-2xl.font-bold.items-center.flex.justify-center
+              = render Stimulus::AnimatedNumberComponent.new(start_value: 0, end_value: 100000, duration: 2000)
+              +
+            .text-sm.font-medium.text-black.text-center
+              = t(".questions_made_to_bot")
+
+      .flex.items-end
+        = render 'hero_form'
+    = render 'hero_partners'
+
+
+
+

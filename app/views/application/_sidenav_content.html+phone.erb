@@ -1,0 +1,72 @@
+<nav aria-label="Sidebar" class="sidenav__content">
+  <% if can?(:read, :home) %>
+    <%= link_to root_path, class: active_class?('home') ? "sidenav__menu-item--active" : "sidenav__menu-item" do %>
+      <%= heroicon "home", options: { class: "sidenav__menu-item-icon" } %>
+      <%= t(".dashboard") %>
+    <% end %>
+  <% end %>
+
+  <% if can_access_transactions? %>
+    <%= link_to transactions_path, class: active_class?('transactions') ? "sidenav__menu-item--active" : "sidenav__menu-item" do %>
+      <%= heroicon "currency-dollar", options: { class: "sidenav__menu-item-icon" } %>
+      <%= Transaction.model_name.human(count: 2) %>
+    <% end %>
+  <% end %>
+
+  <% if can?(:read, :reports) %>
+    <%= link_to reports_path, class: active_class?('reports') ? "sidenav__menu-item--active" : "sidenav__menu-item" do %>
+      <%= heroicon "chart-bar", options: { class: "sidenav__menu-item-icon" } %>
+      <%= t('reports.index.title') %>
+    <% end %>
+  <% end %>
+
+  <hr class="my-3"/>
+
+  <% if can?(:read, Contact) %>
+    <%= link_to contacts_path, class: active_class?('contacts') ? "sidenav__menu-item--active" : "sidenav__menu-item" do %>
+      <%= heroicon "user-group", options: { class: "sidenav__menu-item-icon" } %>
+      <%= Contact.model_name.human(count: 2) %>
+    <% end %>
+  <% end %>
+
+  <% if can?(:read, Category) %>
+    <%= link_to categories_path, class: active_class?('categories') ? "sidenav__menu-item--active" : "sidenav__menu-item" do %>
+      <%= heroicon "list-bullet", options: { class: "sidenav__menu-item-icon" } %>
+      <%= Category.model_name.human(count: 2) %>
+    <% end %>
+  <% end %>
+
+  <% if can?(:read, CostCenter) %>
+    <%= link_to cost_centers_path, class: active_class?('cost_centers') ? "sidenav__menu-item--active" : "sidenav__menu-item" do %>
+      <%= heroicon "queue-list", options: { class: "sidenav__menu-item-icon" } %>
+      <%= CostCenter.model_name.human(count: 2) %>
+    <% end %>
+  <% end %>
+
+  <% if can?(:read, BankAccount) %>
+    <%= link_to bank_accounts_path, class: active_class?('bank_accounts') ? "sidenav__menu-item--active" : "sidenav__menu-item" do %>
+      <%= heroicon "wallet", options: { class: "sidenav__menu-item-icon" } %>
+      <%= BankAccount.model_name.human(count: 2) %>
+    <% end %>
+  <% end %>
+
+  <% if can?(:read, AccountUser) %>
+    <%= link_to account_users_path, class: active_class?('account_users') ? "sidenav__menu-item--active" : "sidenav__menu-item" do %>
+      <%= heroicon 'users', options: { class: 'sidenav__menu-item-icon' } %>
+      <span>
+        <%= AccountUser.model_name.human(count: 2) %>
+      </span>
+    <% end %>
+  <% end %>
+
+  <hr class="my-3"/>
+
+  <% if can?(:read, Import) %>
+    <%= link_to imports_path, class: active_class?('imports') ? "sidenav__menu-item--active" : "sidenav__menu-item" do %>
+      <%= heroicon "arrow-up-on-square", options: { class: "sidenav__menu-item-icon" } %>
+      <span>
+        <%= Import.model_name.human(count: 2) %>
+      </span>
+    <% end %>
+  <% end %>
+</nav>

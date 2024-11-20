@@ -1,0 +1,26 @@
+<footer class="p-4 bg-gray-50 mt-32 md:p-8 lg:p-10">
+  <div class="mx-auto container max-w-screen-xl text-center">
+    <%= link_to root_path, class:"flex justify-center items-center text-2xl font-semibold text-gray-900" do %>
+      <%= image_tag "logo.png", alt: "Yogomarcas", class: "h-12" %>
+    <% end %>
+    <p class="my-6 text-gray-500"><%= t("footer.description") %></p>
+    <ul class="flex flex-wrap justify-center items-center mb-6 text-gray-900 space-x-4 md:space-x-6">
+      <li>
+        <%= link_to t("footer.about"), about_index_path, class: " text-center hover:underline" %>
+      </li>
+      <li>
+        <%= link_to t("footer.services"), services_path, class: "hover:underline" %>
+      </li>
+      <li>
+        <%= link_to t("footer.blog"), blogs_path, class: "hover:underline" %>
+      </li>
+      <li>
+        <%= link_to t("footer.faqs"), faqs_path, class: "hover:underline" %>
+      </li>
+      <li>
+        <%= link_to t("footer.contact"), contact_informations_path, class: "hover:underline" %>
+      </li>
+    </ul>
+    <span class="text-sm text-gray-500 sm:text-center">© 2024-<%= Date.current.year %> <a href="<%= root_path %>" class="hover:underline">Heal sync™</a>. Todos os direitos reservados.</span>
+  </div>
+</footer>

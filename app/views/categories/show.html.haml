@@ -1,0 +1,7 @@
+.container.mx-auto.my-16.space-y-20
+  .mb-8.space-y-6
+    %h1.text-center.text-primary-600.text-5xl.font-bold= @category.name
+    %h2.text-center.text-xl.text-gray-500= @category.description
+  .grid.grid-cols-1.md:grid-cols-2.gap-8
+    - @category.blogs.each do |blog|
+      = render Cards::BlogCardComponent.new(title: blog.title, description: blog.meta, image: blog.header_image, link: blog_path(blog.slug), category: blog.category.name, time_to_read: t('blogs.show.time_to_read', time: reading_time(blog.content).to_i))
