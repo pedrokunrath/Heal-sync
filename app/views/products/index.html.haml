@@ -1,2 +1,10 @@
 = image_tag image_path('base-hero.svg'), class: 'w-full min-h-screen object-cover hidden object-center md:block'
 = image_tag image_path('base-hero-mobile.svg'), class: 'w-full min-h-screen object-cover block object-center md:hidden'
+#chat_history
+  %p= @chat_history
+
+= form_with url: chats_path, method: :post, remote: true do |form|
+  = form.hidden_field :chat_history, value: @chat_history
+  = form.hidden_field :awaiting_pain_level, value: @awaiting_pain_level
+  = form.text_field :user_input, id: "user_input", placeholder: "Descreva seus sintomas aqui..."
+  = form.submit "Enviar"

@@ -63,7 +63,7 @@ pt-BR:
       sign_in: "Entrar"
       sign_up: "Registrar-se"
       talk_to_us: "Fale conosco"
-      products: "Produtos"
+      chat: "Chat"
   home:
     hero:
       title: <span class="text-primary-600">Bem vindo!</span> ao Heal-sync</span>

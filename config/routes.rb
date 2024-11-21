@@ -5,12 +5,16 @@ Rails.application.routes.draw do
   resources :blogs, param: :slug, path: :blog do
     resources :comments
   end
-
   resources :contacts
   resources :products
   # only: /users/sign_in and /users/sign_out
   devise_for :users
 
+  resources :chats, only: [:index] do
+    collection do
+      post :process_input
+    end
+  end
   resources :about, only: [:index]
   resources :services, only: [:index]
   resources :faqs, only: [:index]
@@ -27,5 +31,4 @@ Rails.application.routes.draw do
   authenticated :user, ->(u) { Rails.env.development? || u.admin? } do
     mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   end
-
 end
