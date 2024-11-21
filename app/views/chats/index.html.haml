@@ -1,11 +1,11 @@
-.min-h-screen{class: "bg-cover bg-center", style: "background-image: url('#{image_path('hero.jpg')}'); background-filter: blur(5px);"}
+%div.min-h-screen.flex.items-center.justify-center{ class: "bg-cover bg-center", style: "background-image: url('#{image_path('hero.jpg')}');" }
     .container.mx-auto
-        %div.container.mx-auto.max-w-lg.p-6.bg-gray-100.rounded-lg.shadow-md
-            %h1.text-2xl.font-bold.text-center.text-gray-800.mb-4 HealSync - Triagem Médica
+        %div.container.mx-auto.max-w-2xl.p-6.bg-white.bg-opacity-70.rounded-lg.shadow-lg.relative.z-10
+            %h1.text-3xl.font-bold.text-center.text-gray-900.mb-6 HealSync - Triagem Médica
 
-            %div#chat-history.bg-white.h-80.overflow-y-scroll.border.border-gray-300.rounded-lg.p-4.mb-4
+            %div#chat-history.bg-white.h-96.overflow-y-auto.border.border-gray-300.rounded-lg.p-4.mb-6
                 - @messages.each do |message|
-                    %p{ class: message[:sender] == "Você" ? "text-right text-blue-600 font-semibold" : "text-left text-green-600 font-semibold" }
+                    %p{ class: message[:sender] == "Você" ? "text-right text-blue-600 font-semibold" : "text-left text-gray-600 font-semibold" }
                         %strong= message[:sender] + ": "
                         = message[:text]
 
@@ -13,6 +13,6 @@
                 = hidden_field_tag :messages, @messages.to_json
                 = hidden_field_tag :awaiting_pain_level, @awaiting_pain_level
 
-                .flex.items-center.space-x-2
-                    = text_field_tag :user_input, nil, placeholder: "Descreva seus sintomas aqui...", class: "flex-grow border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring focus:ring-blue-300"
-                    = submit_tag "Enviar", class: "bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
+                .flex.items-center.space-x-4
+                    = text_field_tag :user_input, nil, placeholder: "Descreva seus sintomas aqui...", class: "flex-grow border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                    = submit_tag "Enviar", class: "bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
