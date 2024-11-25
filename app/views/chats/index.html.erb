@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="csrf-token" content="<%= form_authenticity_token %>">
+  <title>HealSync - Triagem Médica</title>
+  <style>
+      body {
+          font-family: Arial, sans-serif;
+          margin: 0;
+          padding: 0;
+          background-color: #f3f4f6;
+      }
+
+      .min-h-screen {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+          background-image: url('<%= image_path('hero.jpg') %>');
+          background-size: cover;
+          background-position: center;
+      }
+
+      .chat-container {
+          background: rgba(255, 255, 255, 0.9);
+          padding: 20px 30px;
+          border-radius: 12px;
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+          max-width: 600px;
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+      }
+
+      h1 {
+          font-size: 1.8rem;
+          color: #007bff;
+          margin-bottom: 20px;
+          text-align: center;
+      }
+
+      .chat-box {
+          border: 1px solid #e5e7eb;
+          padding: 15px;
+          height: 400px;
+          overflow-y: auto;
+          margin-bottom: 20px;
+          width: 100%;
+          background-color: #fff;
+          border-radius: 8px;
+      }
+
+      .chat-message {
+          margin-bottom: 12px;
+      }
+
+      .chat-message strong {
+          color: #374151;
+          font-weight: bold;
+      }
+
+      .input-container {
+          display: flex;
+          width: 100%;
+      }
+
+      #messageInput {
+          flex-grow: 1;
+          padding: 10px;
+          border: 1px solid #d1d5db;
+          border-radius: 8px;
+          font-size: 14px;
+          margin-right: 10px;
+      }
+
+      button {
+          padding: 10px 15px;
+          background-color: #007bff;
+          color: white;
+          border: none;
+          border-radius: 8px;
+          cursor: pointer;
+          font-size: 16px;
+          transition: background-color 0.3s ease;
+      }
+
+      button:hover {
+          background-color: #0056b3;
+      }
+
+      .clear-button {
+          background-color: #dc3545;
+          margin-top: 10px;
+      }
+
+      .clear-button:hover {
+          background-color: #b02a37;
+      }
+  </style>
+</head>
+<body>
+<div class="min-h-screen">
+  <div class="chat-container">
+    <h1>HealSync - Triagem Médica</h1>
+    <div id="chat" class="chat-box">
+      <% if session[:chat_history].present? %>
+        <% session[:chat_history].each do |message| %>
+          <div class="chat-message">
+            <strong><%= message[:user] ? 'Você:' : 'HealSync:' %></strong>
+            <%= message[:content] %>
+          </div>
+        <% end %>
+      <% else %>
+        <p class="chat-message"><strong>HealSync:</strong> Olá! Como posso ajudar hoje?</p>
+      <% end %>
+    </div>
+    <div class="input-container">
+      <input type="text" id="messageInput" placeholder="Descreva seus sintomas aqui..." />
+      <button onclick="sendMessage()">Enviar</button>
+    </div>
+    <button class="clear-button" onclick="clearChat()">Limpar Chat</button>
+  </div>
+</div>
+<script>
+    function sendMessage() {
+        const input = document.getElementById('messageInput');
+        const chat = document.getElementById('chat');
+        const userMessage = input.value;
+
+        if (userMessage.trim() === '') return;
+
+        // Adiciona a mensagem do usuário
+        const userMessageElement = document.createElement('div');
+        userMessageElement.classList.add('chat-message');
+        userMessageElement.innerHTML = `<strong>Você:</strong> ${userMessage}`;
+        chat.appendChild(userMessageElement);
+
+        input.value = ''; // Limpa o campo de entrada
+
+        // Envia a mensagem ao servidor
+        fetch('<%= respond_chats_path %>', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').content
+            },
+            body: JSON.stringify({ user_input: userMessage })
+        })
+            .then(response => response.json())
+            .then(data => {
+                // Adiciona a resposta do bot
+                const botMessageElement = document.createElement('div');
+                botMessageElement.classList.add('chat-message');
+                botMessageElement.innerHTML = `<strong>HealSync:</strong> ${data.response}`;
+                chat.appendChild(botMessageElement);
+
+                // Faz o scroll automático para a última mensagem
+                chat.scrollTop = chat.scrollHeight;
+            })
+            .catch(error => {
+                console.error('Erro ao enviar mensagem:', error);
+            });
+    }
+
+    function clearChat() {
+        fetch('<%= clear_chats_chats_path %>', {
+            method: 'DELETE',
+            headers: {
+                'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').content
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    const chat = document.getElementById('chat');
+                    chat.innerHTML = '<p class="chat-message"><strong>HealSync:</strong> Olá! Como posso ajudar hoje?</p>';
+                }
+            })
+            .catch(error => {
+                console.error('Erro ao limpar o chat:', error);
+            });
+    }
+</script>
+</body>
+</html>

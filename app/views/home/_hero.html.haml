@@ -1,4 +1,4 @@
-.min-h-screen{class: "bg-cover bg-center", style: "background-image: url('#{image_path('hero.jpg')}'); background-filter: blur(5px);"}
+.min-h-screen{class: "bg-cover bg-center flex items-center justify-center", style: "background-image: url('#{image_path('hero.jpg')}'); background-filter: blur(5px);"}
   .container.mx-auto
     .grid.grid-cols-1.w-full.py-32.gap-x-14.gap-y-40.lg:grid-cols-2
       .space-y-12
@@ -8,7 +8,7 @@
           %p.text-xl.text-black.text-justify
             %strong
               = t(".description").html_safe
-        .w-full.bg-black.p-8.rounded-lg.grid.grid-cols-1.md:grid-cols-4.gap-4
+        .w-full.p-8.rounded-lg.grid.grid-cols-1.md:grid-cols-4.gap-4
           .space-y-2
             .leading-none.text-2xl.font-bold.items-center.flex.justify-center
               = render Stimulus::AnimatedNumberComponent.new(start_value: 0, end_value: 200, duration: 2000)
@@ -30,7 +30,3 @@
       .flex.items-end
         = render 'hero_form'
     = render 'hero_partners'
-
-
-
-

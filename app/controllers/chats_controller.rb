@@ -1,44 +1,78 @@
 class ChatsController < ApplicationController
+  before_action :set_chat_state
+
   def index
-    @messages = []
-    @awaiting_pain_level = false
+    # Renderiza a interface do chat
   end
 
-  def process_input
-    @messages = JSON.parse(params[:messages])
-    @awaiting_pain_level = params[:awaiting_pain_level] == 'true'
+  def respond
     user_input = params[:user_input]
+    return render json: { response: "Por favor, insira uma mensagem válida." }, status: :bad_request if user_input.blank?
 
-    if @awaiting_pain_level
-      begin
-        pain_level = Integer(user_input)
-        if pain_level > 5
-          bot_response = "Dor de cabeça hum entendido. Recomenda-se que você consulte \n um médico. \n Horário disponível: Amanhã às 14:00.\n Horário do atendimento: 10:00"
-        else
-          bot_response = "Dor de cabeça leve, deve ser atendida pelo Medico ('jOÃO'\n Horário disponível: 14:30\n Horario de atendimento: 14:00"
-        end
-        @awaiting_pain_level = false
-      rescue ArgumentError
-        bot_response = "Por favor, insira um nível de dor válido entre 1 e 10."
-      end
+    # Atualiza o histórico do chat
+    session[:chat_history] ||= []
+    session[:chat_history] << { user: true, content: user_input }
+
+    # Verifica o estado atual do chat e processa a entrada
+    if session[:awaiting_pain_level]
+      bot_response = process_pain_level(user_input)
     else
-      if user_input.downcase.include?("dor no peito")
-        bot_response = "Sintoma grave : Dor no peito. Por favor, procure um medico:\n Medico disponivel:('Pedro').\n Horario do atendimento: 17:46"
-      elsif user_input.downcase.include?("febre") && user_input.downcase.include?("tosse")
-        bot_response = "Possível caso de infecção respiratória. Recomenda-se um(a) médico."
-      elsif user_input.downcase.include?("dor de cabeça")
-        bot_response = "Você mencionou dor de cabeça. Qual é o nível da dor em uma escala de 1 a 10?"
-        @awaiting_pain_level = true
+      bot_response = process_symptoms(user_input)
+    end
+
+    # Retorna a resposta do bot
+    render json: { response: bot_response }
+  end
+
+  def clear_chats
+    session[:chat_history] = []
+    session[:awaiting_pain_level] = false
+    render json: { success: true, message: "Histórico do chat limpo." }
+  end
+
+  private
+
+  def set_chat_state
+    session[:chat_history] ||= []
+    session[:awaiting_pain_level] ||= false
+  end
+
+  def process_pain_level(user_input)
+    begin
+      # Tenta converter a entrada em um número inteiro
+      pain_level = Integer(user_input)
+      if pain_level < 1 || pain_level > 10
+        bot_response = "Por favor, insira um número válido entre 1 e 10."
+      elsif pain_level > 5
+        bot_response = "Dor de cabeça grave detectada. Recomenda-se que você consulte um médico. Horário disponível: Amanhã às 14:00. Horário do atendimento: 10:00."
       else
-        bot_response = "Sintoma não identificado. Por favor, forneça mais detalhes ou consulte um médico."
+        bot_response = "Dor de cabeça leve. Médico disponível: João. Horário disponível: 14:30. Horário do atendimento: 14:00."
       end
+      session[:awaiting_pain_level] = false
+    rescue ArgumentError
+      bot_response = "Por favor, insira um número válido entre 1 e 10."
     end
+    update_bot_response(bot_response)
+    bot_response
+  end
 
-    @messages << { sender: "Você", text: user_input }
-    @messages << { sender: "HealSync", text: bot_response }
-
-    respond_to do |format|
-      format.js
+  def process_symptoms(user_input)
+    case user_input.downcase
+    when /dor no peito/
+      bot_response = "Sintoma grave: Dor no peito. Por favor, procure um médico. Médico disponível: Pedro. Horário do atendimento: 17:46."
+    when /febre/, /tosse/
+      bot_response = "Possível caso de infecção respiratória. Recomenda-se um médico."
+    when /dor de cabeça/
+      bot_response = "Você mencionou dor de cabeça. Qual é o nível da dor em uma escala de 1 a 10?"
+      session[:awaiting_pain_level] = true
+    else
+      bot_response = "Sintoma não identificado. Por favor, forneça mais detalhes ou consulte um médico."
     end
+    update_bot_response(bot_response)
+    bot_response
+  end
+
+  def update_bot_response(bot_response)
+    session[:chat_history] << { user: false, content: bot_response }
   end
 end

@@ -12,7 +12,8 @@ Rails.application.routes.draw do
 
   resources :chats, only: [:index] do
     collection do
-      post :process_input
+      post :respond
+      delete :clear_chats
     end
   end
   resources :about, only: [:index]
