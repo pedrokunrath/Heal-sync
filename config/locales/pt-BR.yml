@@ -67,7 +67,7 @@ pt-BR:
   home:
     hero:
       title: <span class="text-primary-600">Bem vindo!</span> ao Heal-sync</span>
-      subtitle: Mais do que fornecedores, somos sua família na produção de sorvetes.
+      subtitle:
       description: O HealSync é uma plataforma inovadora projetada para auxiliar pacientes na triagem de sintomas e proporcionar uma experiência de cuidado médico mais acessível e eficiente. Utilizando tecnologias de ponta em inteligência artificial, o HealSync atua como um assistente virtual que coleta informações iniciais sobre os sintomas relatados pelo usuário, fornecendo orientações imediatas sobre a gravidade da condição e recomendações sobre os próximos passos, como a busca por atendimento médico especializado.
 
       cta:
@@ -82,59 +82,9 @@ pt-BR:
       name: "Nome"
       subtitle: <span class="text-primary-600">Esta se sentindo mal?</span> Fale com o nosso Bot de triagem e receba um detalhamento médico!
       cta: Fale com o bot
-    why_us:
-      title: "Porque nós?"
-      description: Na nossa empresa, acreditamos que qualidade e relacionamento são essenciais. Oferecemos os melhores produtos do mercado e tratamos nossos clientes como família. Por isso, trabalhamos com exclusividade, atendendo apenas um cliente por cidade para garantir que cada sorveteria tenha o suporte necessário para prosperar sem competição desleal.
-      high_quality: Qualidade Superior
-      high_quality_description: Nossos produtos são feitos com ingredientes de alta qualidade para garantir que seu sorvete tenha um sabor excepcional e uma textura irresistível.
-      continuous_innovation: Inovação Contínua
-      continuous_innovation_description: Estamos constantemente desenvolvendo novos sabores e bases funcionais para atender às demandas do mercado e surpreender seus clientes.
-      simplified_logistics: Logística Simplificada
-      simplified_logistics_description: Com nossas bases prontas para uso, você pode simplificar sua produção e reduzir custos operacionais, permitindo que você se concentre no que realmente importa – criar sorvetes deliciosos.
-      complete_service: Suporte Completo
-      complete_service_description: Oferecemos atendimento personalizado e suporte técnico para ajudá-lo em todas as etapas, desde a escolha do produto até a implementação na sua sorveteria.
-    about_us:
-      title: "Criado para Sorveterias que Buscam Excelência"
-      description: "Focamos em oferecer produtos de alta qualidade e suporte técnico, ajudando sorveterias a alcançar o máximo potencial sem concorrência desleal."
-      cta: "Saiba Mais"
-      star_title: "Qualidade Superior"
-      star_description: "Nossos produtos são feitos com ingredientes de alta qualidade para garantir que seu sorvete tenha um sabor excepcional e uma textura irresistível."
-      rocket_title: "Inovação Contínua"
-      truck_title: "Logística Simplificada"
-      rocket_description: "Estamos constantemente desenvolvendo novos sabores e bases funcionais para atender às demandas do mercado e surpreender seus clientes."
-      truck_description: "Com nossas bases prontas para uso, você pode simplificar sua produção e reduzir custos operacionais, permitindo que você se concentre no que realmente importa – criar sorvetes deliciosos."
-      support_title: "Suporte Completo"
-      support_description: "Oferecemos atendimento personalizado e suporte técnico para ajudá-lo em todas as etapas, desde a escolha do produto até a implementação na sua sorveteria."
-    product_customization:
-      title: "Personalização Sob Medida para Sua Sorveteria"
-      description: "Não nos limitamos a oferecer produtos prontos. Sabemos que cada sorveteria é única e que seus produtos devem refletir essa individualidade. Por isso, oferecemos um serviço exclusivo de personalização, onde criamos mixes com as fórmulas desenvolvidas especialmente para você."
-      search_title: "Entendimento das Necessidades"
-      search_description: "Trabalhamos de perto com você para entender suas necessidades e desejos específicos. Nossa equipe especializada está pronta para ouvir suas ideias e transformar sua visão em realidade."
-      flask_title: "Desenvolvimento da Fórmula"
-      flask_description: "Com base nas suas especificações, desenvolvemos uma fórmula exclusiva que atende exatamente às suas expectativas. Utilizamos ingredientes de alta qualidade para garantir que o resultado final seja um sorvete excepcional."
-      test_title: "Teste e Aprovação"
-      test_description: "Após a criação da fórmula, realizamos testes rigorosos para garantir a qualidade e o sabor. Você terá a oportunidade de provar e aprovar a fórmula antes de começarmos a produção em larga escala."
-      production_title: "Produção e Entrega"
-      production_description: "Uma vez aprovada, iniciamos a produção do seu pó personalizado. Garantimos uma entrega rápida e eficiente para que você possa começar a usar o produto o quanto antes."
-      see_more: "Saiba mais"
-      want_product_customization: "Quer criar um sorvete único para sua sorveteria?"
-    want_product_customization:
-      want_product_customization: "Quer criar um sorvete único para sua sorveteria?"
-      description: "Entre em contato conosco hoje mesmo e descubra como podemos ajudar a transformar suas ideias em deliciosas realidades."
-      cta: 'Solicitar Personalização'
-    want_product_form:
-      cta: "Solicitar Personalização"
-    product_costumization_feedback:
-      feedback: '"Trabalhar com a yogomarcas foi uma experiência incrível. Conseguimos criar um sabor magnífico que tem sido um sucesso entre nossos clientes. O suporte e a qualidade são incomparáveis."'
-      feedback_info: "Proprietário da Gelatos de luxo"
-  blogs:
-    show:
-      time_to_read: "%{time} min de leitura"
-      index: "ÍNDICE"
-    related_articles:
-      related_articles: "Artigos relacionados"
+
   footer:
-    description: "Na Yogomarcas, acreditamos que cada sorveteria merece um toque especial. Junte-se a nós e sinta a diferença de ser parte da nossa família!"
+    description: "O HealSync é uma inovadora plataforma de triagem médica que utiliza tecnologia inteligente para auxiliar pacientes a identificar e compreender seus sintomas. "
     about: "Sobre nós"
     services: "Serviços"
     blog: "Blog"

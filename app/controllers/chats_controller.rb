@@ -13,7 +13,6 @@ class ChatsController < ApplicationController
     session[:chat_history] ||= []
     session[:chat_history] << { user: true, content: user_input }
 
-    # Verifica o estado atual do chat e processa a entrada
     if session[:awaiting_pain_level]
       bot_response = process_pain_level(user_input)
     else
@@ -39,18 +38,15 @@ class ChatsController < ApplicationController
 
   def process_pain_level(user_input)
     begin
-      # Tenta converter a entrada em um número inteiro
       pain_level = Integer(user_input)
-      if pain_level < 1 || pain_level > 10
-        bot_response = "Por favor, insira um número válido entre 1 e 10."
-      elsif pain_level > 5
-        bot_response = "Dor de cabeça grave detectada. Recomenda-se que você consulte um médico. Horário disponível: Amanhã às 14:00. Horário do atendimento: 10:00."
+      if pain_level > 5
+        bot_response = "Dor de cabeça grave detectada. Recomenda-se que você consulte um médico. Horário disponível: Hoje às 14:00. Horário do atendimento: 14:00."
       else
-        bot_response = "Dor de cabeça leve. Médico disponível: João. Horário disponível: 14:30. Horário do atendimento: 14:00."
+        bot_response = "Dor de cabeça leve. Medico João receita que você tome um paracetamol."
       end
       session[:awaiting_pain_level] = false
     rescue ArgumentError
-      bot_response = "Por favor, insira um número válido entre 1 e 10."
+      bot_response = "Por favor, insira um nível de dor válido entre 1 e 10."
     end
     update_bot_response(bot_response)
     bot_response
