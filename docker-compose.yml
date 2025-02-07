@@ -1,24 +1,24 @@
 version: '3.2'
 services:
-  yogomarcas-mail:
+  HealSync-mail:
     image: 'sj26/mailcatcher'
     ports:
       - "1080:1080"
       - "1025:1025"
 
-  yogomarcas-redis:
+  HealSync-redis:
     image: redis:alpine
     ports:
       - "6379:6379"
 
-  yogomarcas-db:
+  HealSync-db:
     image: postgres:14-alpine
     environment:
       - POSTGRES_PASSWORD=postgres
     ports:
       - "5432:5432"
     volumes:
-      - "yogomarcas-db-data:/var/lib/postgresql/data"
+      - "HealSync-db-data:/var/lib/postgresql/data"
 
 volumes:
-  yogomarcas-db-data:
+  HealSync-db-data:
