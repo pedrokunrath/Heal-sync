@@ -1,5 +1,7 @@
 class ChatsController < ApplicationController
   before_action :set_chat_state
+  before_action :authenticate_user!
+
 
   def index
     # Renderiza a interface do chat

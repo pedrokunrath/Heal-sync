@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby "3.1.2"
+ruby "3.3.6"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.3", ">= 7.1.3.2"
@@ -76,7 +76,7 @@ gem 'html2haml', '~> 2.3'
 gem "rails_admin", "~> 3.0.beta2"
 gem "sassc-rails"
 gem "cancancan", "~> 3.5"
-gem "devise", "~> 4.9"
+gem 'devise', '~> 4.2'
 gem "view_component", "~> 3.12"
 gem "heroicon", "~> 1.0"
 

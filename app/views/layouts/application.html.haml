@@ -1,4 +1,3 @@
-!!!
 %html.scroll-smooth
   %head
     -# change web locale to pt-BR
@@ -12,10 +11,8 @@
     = csp_meta_tag
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     = javascript_include_tag "application", "data-turbo-track": "reload", type: "module"
-
     %link{:href => "favicon.ico", :rel => "icon", :type => "image/x-icon"}/
   %body
-
     - if %w[blogs categories].include?(controller.controller_name)
       = render Header::BlogHeaderComponent.new
     - elsif !( controller.controller_name == "registrations" || controller.controller_name == "sessions" )
@@ -23,6 +20,11 @@
         = render Header::HeaderComponent.new
       .block.md:hidden
         -# = render 'sidenav'
+
+    - if user_signed_in?
+      = link_to 'Logout', destroy_user_session_path, method: :delete
+    - else
+      = link_to 'Login', new_user_session_path
 
     %main
       = yield
@@ -34,5 +36,3 @@
 
       = turbo_frame_tag "flash" do
         = render(FlashComponent.new(flash: flash))
-
-
