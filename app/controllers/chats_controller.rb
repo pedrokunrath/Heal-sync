@@ -4,14 +4,14 @@ class ChatsController < ApplicationController
 
 
   def index
-    # Renderiza a interface do chat
+
   end
 
   def respond
     user_input = params[:user_input]
     return render json: { response: "Por favor, insira uma mensagem válida." }, status: :bad_request if user_input.blank?
 
-    # Atualiza o histórico do chat
+
     session[:chat_history] ||= []
     session[:chat_history] << { user: true, content: user_input }
 
@@ -21,7 +21,7 @@ class ChatsController < ApplicationController
       bot_response = process_symptoms(user_input)
     end
 
-    # Retorna a resposta do bot
+
     render json: { response: bot_response }
   end
 
